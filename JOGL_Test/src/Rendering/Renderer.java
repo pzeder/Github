@@ -9,10 +9,6 @@ public class Renderer {
 	private static GLWindow window;
 	private static ScreenResolution screenRes;
 	private static MouseInput mouseInput;
-	
-	public static void main(String[] args) {
-		init();
-	}
 
 	public static void init() {		
 		GLProfile.initSingleton();
