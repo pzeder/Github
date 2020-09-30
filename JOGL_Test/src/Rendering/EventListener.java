@@ -11,12 +11,10 @@ public class EventListener implements GLEventListener {
 	@Override
 	public void display(GLAutoDrawable drawable) {
 		gl = drawable.getGL().getGL2();
-		//gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
-		BallPark.draw();
+		// Uncomment for screen clear
+		gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
+		BallPark.render();
 		gl.glFlush();
-
-		// Uncomment to print FPS
-		System.out.println(Renderer.getFPS());
 	}
 
 	@Override

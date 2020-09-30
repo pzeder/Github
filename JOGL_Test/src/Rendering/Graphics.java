@@ -103,7 +103,7 @@ public class Graphics {
 	}
 
 	private static void ellipseShell(GL2 gl, float x, float y, float width, float height) {
-		for (int i = 0; i < 360; i += 4) {
+		for (int i = 0; i < 360; i += 2) {
 			double rad = 2 * Math.PI * i / 360;
 			float radiusX = (float) width / 2;
 			float radiusY = (float) height / 2;

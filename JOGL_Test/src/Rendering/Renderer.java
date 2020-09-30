@@ -18,7 +18,7 @@ public class Renderer {
 		screenRes = new ScreenResolution(1600,1200,100);
 		mouseInput = new MouseInput();
 		
-		window.setTitle("Look at my balls!");
+		window.setTitle("JOGL Test");
 		window.setSize(screenRes.getWidth(), screenRes.getHeight());
 		window.setResizable(false);
 		window.addGLEventListener(new EventListener());
@@ -28,6 +28,13 @@ public class Renderer {
 		window.setAnimator(new FPSAnimator(window, 60));
 		window.getAnimator().setUpdateFPSFrames(10, null);
 		window.getAnimator().start();
+	}
+	
+	public static void render() {
+		if (window == null) {
+			return;
+		}
+		window.display();
 	}
 	
 	public static GLWindow getWindow() {

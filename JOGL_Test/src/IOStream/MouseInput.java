@@ -5,10 +5,10 @@ import Rendering.Renderer;
 import com.jogamp.newt.event.MouseEvent;
 import com.jogamp.newt.event.MouseListener;
 
-public class MouseInput implements MouseListener { // extends MouseAdapter {
-	private static boolean leftButton, rightButton;
+public class MouseInput implements MouseListener {
 	private static PVector pos;
-
+	private static boolean leftPressed, rightPressed;
+	
 	@Override
 	// triggers only if the the mouse was on the window during press and release
 	public void mouseClicked(MouseEvent e) {
@@ -20,10 +20,10 @@ public class MouseInput implements MouseListener { // extends MouseAdapter {
 		int button = e.getButton();
 		switch (button) {
 		case 1:
-			leftButton = true;
+			leftPressed = true;
 			break;
 		case 3:
-			rightButton = true;
+			rightPressed = true;
 			break;
 		}
 	}
@@ -34,13 +34,13 @@ public class MouseInput implements MouseListener { // extends MouseAdapter {
 		int button = e.getButton();
 		switch (button) {
 		case 1:
-			leftButton = false;
+			leftPressed = false;
 			break;
 		case 3:
-			rightButton = false;
+			rightPressed = false;
 			break;
 		}
-		BallPark.createBalls(50, pos.x, pos.y);
+		BallPark.createBalls(10, pos.x, pos.y);
 	}
 	
 	public void mouseEntered(MouseEvent e) {
@@ -67,18 +67,18 @@ public class MouseInput implements MouseListener { // extends MouseAdapter {
 
 	}
 	
-	public static boolean leftButtonPressed() {
-		return leftButton;
+	public static boolean leftPressed() {
+		return leftPressed;
 	}
 	
-	public static boolean rightButtonPressed() {
-		return rightButton;
+	public static boolean rightPressed() {
+		return rightPressed;
 	}
 	
 	public static PVector getPos() {
 		if (pos == null) {
 			return new PVector(-1,-1);
 		}
-		return pos;
+		return new PVector(pos);
 	}
 }
