@@ -19,7 +19,7 @@ public class EventListener implements GLEventListener {
 
 	@Override
 	public void dispose(GLAutoDrawable drawable) {
-		drawable.getAnimator().stop();
+		System.exit(0);
 	}
 
 	@Override

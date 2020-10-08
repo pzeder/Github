@@ -24,10 +24,6 @@ public class Renderer {
 		window.addGLEventListener(new EventListener());
 		window.addMouseListener(mouseInput);
 		window.setVisible(true);
-		
-		window.setAnimator(new FPSAnimator(window, 60));
-		window.getAnimator().setUpdateFPSFrames(10, null);
-		window.getAnimator().start();
 	}
 	
 	public static void render() {
