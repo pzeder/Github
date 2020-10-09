@@ -25,6 +25,7 @@ public class EventListener implements GLEventListener {
 	@Override
 	public void init(GLAutoDrawable drawable) {
 		gl = drawable.getGL().getGL2();
+		gl.setSwapInterval(0);
 		gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
 	}
 

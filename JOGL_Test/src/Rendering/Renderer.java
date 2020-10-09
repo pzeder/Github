@@ -40,12 +40,5 @@ public class Renderer {
 	public static ScreenResolution getScreenRes() {
 		return screenRes;
 	}
-	
-	public static float getFPS() {
-		if (window.getAnimator() == null) {
-			return 0;
-		}
-		return window.getAnimator().getLastFPS();
-	}
 }
 

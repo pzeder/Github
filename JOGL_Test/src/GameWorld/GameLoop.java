@@ -9,7 +9,7 @@ public class GameLoop {
 	
 	private static int SEC = 1_000_000_000;
 	private static int targetFPS = 60;
-	private static int targetTime = SEC / targetFPS;
+	private static int timePerFrame = SEC / targetFPS;
 	
 	private static int fps;
 	
@@ -39,9 +39,9 @@ public class GameLoop {
 					}
 					
 					long timeTaken = System.nanoTime() - startTime;
-				    if (timeTaken < targetTime) {
+				    if (timeTaken < timePerFrame) {
 				    	try {
-							Thread.sleep((targetTime - timeTaken) / SEC);
+							Thread.sleep((timePerFrame - timeTaken) / 1_000_000);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
