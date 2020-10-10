@@ -1,9 +1,10 @@
 package Rendering;
-import IOStream.MouseInput;
 import com.jogamp.newt.opengl.GLWindow;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.FPSAnimator;
+
+import Input.MouseInput;
 
 public class Renderer {
 	private static GLWindow window;

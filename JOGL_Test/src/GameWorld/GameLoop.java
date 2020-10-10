@@ -1,7 +1,7 @@
 package GameWorld;
 
+import Input.MouseInput;
 import Rendering.Renderer;
-import IOStream.MouseInput;
 
 public class GameLoop {
 	

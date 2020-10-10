@@ -1,4 +1,4 @@
-package IOStream;
+package Input;
 import Math.PVector;
 import GameWorld.BallPark;
 import Rendering.Renderer;
