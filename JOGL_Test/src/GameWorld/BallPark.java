@@ -1,6 +1,8 @@
 package GameWorld;
 import java.util.ArrayList;
 
+import Math.PVector;
+
 public class BallPark {
 	private static ArrayList<Ball> balls = new ArrayList<Ball>();
 	
@@ -13,6 +15,15 @@ public class BallPark {
 	public static void createBalls(int n, float posX, float posY) {
 		for (int i = 0; i < n; i++) { 
 			balls.add(new Ball(posX, posY));
+		}
+	}
+	
+	public static void deleteBalls(PVector mousePos) {
+		for (int i = balls.size()-1; i >= 0; i--) {
+			Ball ball = balls.get(i);
+			if (PVector.sub(ball.getPos(), mousePos).mag() < ball.getRadius()) {
+				balls.remove(i);
+			}
 		}
 	}
 	
