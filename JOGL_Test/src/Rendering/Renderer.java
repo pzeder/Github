@@ -16,7 +16,7 @@ public class Renderer {
 		GLProfile profile = GLProfile.get(GLProfile.GL2);
 		GLCapabilities caps = new GLCapabilities(profile);	
 		window = GLWindow.create(caps);
-		screenRes = new ScreenResolution(1600,1200,100);
+		screenRes = new ScreenResolution(3200,2400,100);
 		mouseInput = new MouseInput();
 		
 		window.setTitle("JOGL Test");
