@@ -80,4 +80,8 @@ public class PVector {
 		float randomY = (float) (Math.sin(randomAngle) * randomLength);
 		return new PVector(randomX, randomY);
 	}
+	
+	public float mag() {
+		return (float) Math.sqrt(x*x + y*y);
+	}
 }
