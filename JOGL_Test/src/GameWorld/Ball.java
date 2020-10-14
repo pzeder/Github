@@ -11,9 +11,10 @@ public class Ball {
 	
 	public Ball(float x, float y) {
 		this.pos = new PVector(x, y);
-		this.velo = PVector.random(0, 0.3f);
-		this.radius = (float) (Math.random() * 2 + 2);
+		this.velo = PVector.random(0.1f, 0.4f);
+		this.radius = (float) (Math.random() * 0.4);
 		this.color = Color.random();
+		this.rotation = (float) (0.1 + Math.random() * 2*Math.PI);
 	}
 	
 	public void move() {
@@ -29,10 +30,18 @@ public class Ball {
 		rotation += 0.01;
 	}
 	
+	public PVector getPos() {
+		return new PVector(pos);
+	}
+	
+	public float getRadius() {
+		return radius;
+	}
+	
 	public void paint() {
 		Graphics.noStroke();
 		Graphics.fill(color);
 		Graphics.rotate(pos.x, pos.y, rotation);
-		Graphics.ellipse(pos.x, pos.y, 2 * radius, 2 * radius);
+		Graphics.rect(pos.x, pos.y, 2 * radius, 2 * radius);
 	}
 }

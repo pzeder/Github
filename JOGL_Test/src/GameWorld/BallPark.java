@@ -2,6 +2,8 @@ package GameWorld;
 import java.util.ArrayList;
 
 import Math.PVector;
+import Rendering.Graphics;
+import Rendering.Renderer;
 
 public class BallPark {
 	private static ArrayList<Ball> balls = new ArrayList<Ball>();
@@ -27,7 +29,17 @@ public class BallPark {
 		}
 	}
 	
+	public static int objectAmount() {
+		return balls.size();
+	}
+	
 	public static void render() {
+		float width = Renderer.getScreenRes().getUnitsWide();
+		float height = Renderer.getScreenRes().getUnitsTall();
+		Graphics.stroke(100, 100, 100);
+		for (int i = 0; i < height; i+=5) {
+			Graphics.line(0, i, width, i);
+		}
 		for (int i = 0; i < balls.size(); i++) {
 			balls.get(i).paint();
 		}

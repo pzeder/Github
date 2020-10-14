@@ -35,7 +35,7 @@ public class MouseInput implements MouseListener {
 		switch (button) {
 		case 1:
 			leftPressed = false;
-			BallPark.createBalls(1, pos.x, pos.y);
+			BallPark.createBalls(3000, pos.x, pos.y);
 			break;
 		case 3:
 			rightPressed = false;

@@ -11,8 +11,6 @@ public class GameLoop {
 	private static int targetFPS = 60;
 	private static int timePerFrame = SEC / targetFPS;
 	
-	private static int fps;
-	
 	public static void start() {
 		Thread thread = new Thread() {
 			public void run() {
@@ -34,6 +32,7 @@ public class GameLoop {
 					fpsCounter++;
 					if (System.nanoTime() >= lastFpsCheck + SEC) {
 						System.out.println(fpsCounter);
+						System.out.println(BallPark.objectAmount());
 						fpsCounter = 0;
 						lastFpsCheck = System.nanoTime();
 					}
