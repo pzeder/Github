@@ -54,13 +54,12 @@ public class MouseInput implements MouseListener {
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-
+		mouseMoved(e);
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		pos = Renderer.getScreenRes().getPosUnits(e.getX(), e.getY());
+		pos = Renderer.getPosUnits(e.getX(), e.getY());
 	}
 
 	@Override
