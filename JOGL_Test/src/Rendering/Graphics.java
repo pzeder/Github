@@ -6,6 +6,7 @@ public class Graphics {
 	private static float rFill, gFill, bFill;
 	private static float rStroke, gStroke, bStroke;
 	private static boolean fillEnable = true, strokeEnable = true;
+	private static float rFilter = 1, gFilter = 1, bFilter = 1;
 	private static PVector rotationCenter = new PVector(0,0);
 	private static float rotationAngle;
 
@@ -46,7 +47,7 @@ public class Graphics {
 	
 	public static void line(float startX, float startY, float endX, float endY) {
 		GL2 gl = EventListener.gl;
-		gl.glColor3f(rStroke, gStroke, bStroke);
+		gl.glColor3f(rStroke * rFilter, gStroke * gFilter, bStroke * bFilter);
 		gl.glBegin ( GL2.GL_LINES );
 		gl.glVertex2f(startX, startY);
 		gl.glVertex2f(endX, endY);
@@ -56,13 +57,13 @@ public class Graphics {
 	public static void rect(float x, float y, float width, float height) {
 		GL2 gl = EventListener.gl;
 		if (fillEnable) {
-			gl.glColor3f(rFill, gFill, bFill);
+			gl.glColor3f(rFill * rFilter, gFill * gFilter, bFill * bFilter);
 			gl.glBegin(GL2.GL_QUADS);
 			rectShell(gl, x, y, width, height);
 			gl.glEnd();
 		}
 		if (strokeEnable) {
-			gl.glColor3f(rStroke, gStroke, bStroke);
+			gl.glColor3f(rStroke * rFilter, gStroke * gFilter, bStroke * bFilter);
 			gl.glBegin(GL2.GL_LINE_LOOP);
 			rectShell(gl, x, y, width, height);
 			gl.glEnd();
@@ -89,13 +90,13 @@ public class Graphics {
 	public static void ellipse(float x, float y, float width, float height) {
 		GL2 gl = EventListener.gl;
 		if (fillEnable) {
-			gl.glColor3f(rFill, gFill, bFill);
+			gl.glColor3f(rFill * rFilter, gFill * gFilter, bFill * bFilter);
 			gl.glBegin(GL2.GL_POLYGON);
 			ellipseShell(gl, x, y, width, height);
 			gl.glEnd();
 		}
 		if (strokeEnable) {
-			gl.glColor3f(rStroke, gStroke, bStroke);
+			gl.glColor3f(rStroke * rFilter, gStroke * gFilter, bStroke * bFilter);
 			gl.glBegin(GL2.GL_LINE_LOOP);
 			ellipseShell(gl, x, y, width, height);
 			gl.glEnd();
@@ -118,5 +119,35 @@ public class Graphics {
 	
 	public static void endRotate() {
 		rotationAngle = 0;
+	}
+	
+	public static void setColorFilter(float red, float green, float blue) {
+		rFilter = Math.max(0, Math.min(red, 1));
+		gFilter = Math.max(0, Math.min(green, 1));
+		bFilter = Math.max(0, Math.min(blue, 1));
+	}
+	
+	public static float getRedFilter() {
+		return rFilter;
+	}
+	
+	public static float getGreenFilter() {
+		return gFilter;
+	}
+	
+	public static float getBlueFilter() {
+		return bFilter;
+	}
+	
+	public static void switchRedFilter() {
+		rFilter = 1 - rFilter;
+	}
+	
+	public static void switchGreenFilter() {
+		gFilter = 1 - gFilter;
+	}
+	
+	public static void switchBlueFilter() {
+		bFilter = 1 - bFilter;
 	}
 }

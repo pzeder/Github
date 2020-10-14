@@ -4,12 +4,14 @@ import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.FPSAnimator;
 
+import Input.KeyInput;
 import Input.MouseInput;
 import Math.PVector;
 
 public class Renderer {
 	private static GLWindow window;
 	private static MouseInput mouseInput;
+	private static KeyInput keyInput;
 	private static int width, height;
 	private static float unitsWide, unitsTall;
 
@@ -18,16 +20,17 @@ public class Renderer {
 		GLProfile profile = GLProfile.get(GLProfile.GL2);
 		GLCapabilities caps = new GLCapabilities(profile);	
 		window = GLWindow.create(caps);
+		mouseInput = new MouseInput();
+		window.addMouseListener(mouseInput);
+		keyInput = new KeyInput();
+		window.addKeyListener(keyInput);
 		
 		unitsWide = 100;
-		refreshResolution(3200, 2400);
-		mouseInput = new MouseInput();
+		refreshResolution(2200, 2200);
 		window.setSize(width, height);
-		
 		window.setTitle("JOGL Test");
 		window.setResizable(true);
-		window.addGLEventListener(new EventListener());
-		window.addMouseListener(mouseInput);
+		window.addGLEventListener(new EventListener());		
 		window.setVisible(true);
 	}
 	

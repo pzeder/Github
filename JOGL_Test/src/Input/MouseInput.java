@@ -6,8 +6,8 @@ import com.jogamp.newt.event.MouseEvent;
 import com.jogamp.newt.event.MouseListener;
 
 public class MouseInput implements MouseListener {
-	private static PVector pos;
-	private static boolean leftPressed, rightPressed;
+	private PVector pos;
+	private boolean leftPressed, rightPressed;
 	
 	@Override
 	// triggers only if the the mouse was on the window during press and release
@@ -68,15 +68,15 @@ public class MouseInput implements MouseListener {
 
 	}
 	
-	public static boolean leftPressed() {
+	public boolean leftPressed() {
 		return leftPressed;
 	}
 	
-	public static boolean rightPressed() {
+	public boolean rightPressed() {
 		return rightPressed;
 	}
 	
-	public static PVector getPos() {
+	public PVector getPos() {
 		if (pos == null) {
 			return new PVector(-1,-1);
 		}

@@ -34,12 +34,6 @@ public class BallPark {
 	}
 	
 	public static void render() {
-		float width = Renderer.getUnitsWide();
-		float height = Renderer.getUnitsTall();
-		Graphics.stroke(100, 100, 100);
-		for (int i = 0; i < height; i+=5) {
-			Graphics.line(0, i, width, i);
-		}
 		for (int i = 0; i < balls.size(); i++) {
 			balls.get(i).paint();
 		}
