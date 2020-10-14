@@ -19,8 +19,8 @@ public class Ball {
 	
 	public void move() {
 		pos.add(velo);
-		float width = Renderer.getScreenRes().getUnitsWide();
-		float height = Renderer.getScreenRes().getUnitsTall();
+		float width = Renderer.getUnitsWide();
+		float height = Renderer.getUnitsTall();
 		if ((pos.x < radius) || (pos.x > width - radius)) {
 			velo.x *= -1;
 		}

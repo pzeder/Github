@@ -5,23 +5,27 @@ import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.FPSAnimator;
 
 import Input.MouseInput;
+import Math.PVector;
 
 public class Renderer {
 	private static GLWindow window;
-	private static ScreenResolution screenRes;
 	private static MouseInput mouseInput;
+	private static int width, height;
+	private static float unitsWide, unitsTall;
 
 	public static void init() {		
 		GLProfile.initSingleton();
 		GLProfile profile = GLProfile.get(GLProfile.GL2);
 		GLCapabilities caps = new GLCapabilities(profile);	
 		window = GLWindow.create(caps);
-		screenRes = new ScreenResolution(3200,2400,100);
+		
+		unitsWide = 100;
+		refreshResolution(3200, 2400);
 		mouseInput = new MouseInput();
+		window.setSize(width, height);
 		
 		window.setTitle("JOGL Test");
-		window.setSize(screenRes.getWidth(), screenRes.getHeight());
-		window.setResizable(false);
+		window.setResizable(true);
 		window.addGLEventListener(new EventListener());
 		window.addMouseListener(mouseInput);
 		window.setVisible(true);
@@ -38,8 +42,32 @@ public class Renderer {
 		return window;
 	}
 	
-	public static ScreenResolution getScreenRes() {
-		return screenRes;
+	public static int getWidth() {
+		return width;
+	}
+	
+	public static  int getHeight() {
+		return height;
+	}
+	
+	public static float getUnitsWide() {
+		return unitsWide;
+	}
+	
+	public static float getUnitsTall() {
+		return unitsTall;
+	}
+	
+	public static PVector getPosUnits(int pixelX, int pixelY) {
+		float unitsX = (float) pixelX / width * unitsWide;
+		float unitsY = (float) pixelY / height * unitsTall;
+		return new PVector(unitsX, unitsY);
+	}
+	
+	public static void refreshResolution(int windowWidth, int windowHeight) {
+		width = windowWidth;
+		height = windowHeight;
+		unitsTall = height / (width / unitsWide);
 	}
 }
 
