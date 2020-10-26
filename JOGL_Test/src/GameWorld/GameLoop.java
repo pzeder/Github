@@ -1,6 +1,7 @@
 package GameWorld;
 
 import Input.MouseInput;
+import Rendering.Animation;
 import Rendering.Renderer;
 
 public class GameLoop {
@@ -28,6 +29,7 @@ public class GameLoop {
 					// Input
 					
 					if (!paused) {
+						Animation.update();
 						BallPark.update();
 					}
 					

@@ -13,6 +13,7 @@ public class EventListener implements GLEventListener {
 		gl = drawable.getGL().getGL2();
 		// Uncomment for screen clear
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
+		Animation.render();
 		BallPark.render();
 		gl.glFlush();
 	}
@@ -27,6 +28,7 @@ public class EventListener implements GLEventListener {
 		gl = drawable.getGL().getGL2();
 		gl.setSwapInterval(0);
 		gl.glClearColor(0.2f, 0.2f, 0.2f, 1);
+		gl.glEnable(GL2.GL_TEXTURE_2D);
 	}
 
 	@Override

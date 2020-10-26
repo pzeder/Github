@@ -10,6 +10,7 @@ import Math.PVector;
 
 public class Renderer {
 	private static GLWindow window;
+	private static GLProfile profile;
 	private static MouseInput mouseInput;
 	private static KeyInput keyInput;
 	private static int width, height;
@@ -17,7 +18,7 @@ public class Renderer {
 
 	public static void init() {		
 		GLProfile.initSingleton();
-		GLProfile profile = GLProfile.get(GLProfile.GL2);
+		profile = GLProfile.get(GLProfile.GL2);
 		GLCapabilities caps = new GLCapabilities(profile);	
 		window = GLWindow.create(caps);
 		mouseInput = new MouseInput();
@@ -43,6 +44,10 @@ public class Renderer {
 	
 	public static GLWindow getWindow() {
 		return window;
+	}
+	
+	public static GLProfile getProfile() {
+		return profile;
 	}
 	
 	public static int getWidth() {
