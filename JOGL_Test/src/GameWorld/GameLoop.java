@@ -37,8 +37,8 @@ public class GameLoop {
 					
 					fpsCounter++;
 					if (System.nanoTime() >= lastFpsCheck + SEC) {
-						// System.out.println(fpsCounter);
-						// System.out.println(BallPark.objectAmount());
+						System.out.println(fpsCounter);
+						System.out.println(BallPark.objectAmount());
 						fpsCounter = 0;
 						lastFpsCheck = System.nanoTime();
 					}
