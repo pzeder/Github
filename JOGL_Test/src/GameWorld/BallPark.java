@@ -38,5 +38,9 @@ public class BallPark {
 			balls.get(i).paint();
 		}
 	}
+	
+	public static void clear() {
+	  balls.clear();
+	}
 }
 

@@ -3,6 +3,7 @@ package Input;
 import com.jogamp.newt.event.KeyEvent;
 import com.jogamp.newt.event.KeyListener;
 
+import GameWorld.BallPark;
 import GameWorld.GameLoop;
 import Rendering.Graphics;
 
@@ -35,6 +36,9 @@ public class KeyInput implements KeyListener {
 		}
 		if (keyCode == 66) {
 			Graphics.switchBlueFilter();
+		}
+		if (keyCode == 67) {
+			BallPark.clear();
 		}
 		// Uncomment to print keyCode
 		// System.out.println(keyCode);
