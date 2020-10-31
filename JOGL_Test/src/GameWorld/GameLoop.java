@@ -1,6 +1,5 @@
 package GameWorld;
 
-import Input.MouseInput;
 import Rendering.Animation;
 import Rendering.Renderer;
 
@@ -8,7 +7,11 @@ public class GameLoop {
 	
 	private static boolean running;
 	
-	private static int SEC = 1_000_000_000;
+	private static int updates;
+	private static int maxUpdates = 5;
+	private static long lastUpdateTime;
+	
+	private static int SEC = 1000;
 	private static int targetFPS = 60;
 	private static int timePerFrame = SEC / targetFPS;
 	
@@ -19,34 +22,41 @@ public class GameLoop {
 			public void run() {
 				
 				int fpsCounter = 0;
-				long lastFpsCheck = System.nanoTime();
-				
+				long lastFpsCheck = System.currentTimeMillis();
+				lastUpdateTime = System.currentTimeMillis();				
 				running = true;
 				
 				while (running) {
-					long startTime = System.nanoTime();
+					long startTime = System.currentTimeMillis();
 					
 					// Input
 					
 					if (!paused) {
-						Animation.update();
-						BallPark.update();
+						updates = 0;
+						while (startTime - lastUpdateTime >= timePerFrame) {
+							Animation.update();
+							BallPark.update();
+							lastUpdateTime += timePerFrame;
+							if (++updates >= maxUpdates) {
+								break;
+							}
+						}
 					}
 					
 					Renderer.render();
 					
 					fpsCounter++;
-					if (System.nanoTime() >= lastFpsCheck + SEC) {
+					if (System.currentTimeMillis() >= lastFpsCheck + SEC) {
 						System.out.println(fpsCounter);
 						System.out.println(BallPark.objectAmount());
 						fpsCounter = 0;
-						lastFpsCheck = System.nanoTime();
+						lastFpsCheck = System.currentTimeMillis();
 					}
 					
-					long timeTaken = System.nanoTime() - startTime;
+					long timeTaken = System.currentTimeMillis() - startTime;
 				    if (timeTaken < timePerFrame) {
 				    	try {
-							Thread.sleep((timePerFrame - timeTaken) / 1_000_000);
+							Thread.sleep(timePerFrame - timeTaken);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
@@ -60,5 +70,6 @@ public class GameLoop {
 	
 	public static void pause() {
 		paused = !paused;
+		lastUpdateTime = System.currentTimeMillis();
 	}
 }
